@@ -3,7 +3,7 @@ Money Forwardにおける口座情報の更新を一括で行うスクリプト�
 二段階認証にも対応しています。
 
 ## Requirements
-- Python (2 or 3)
+- Python3
 - Selenium
 - ChromeDriver
 

@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 from selenium import webdriver
@@ -15,6 +16,7 @@ print("実行中...")
 
 #関数を宣言
 def bye():
+	print("終了します...")
 	driver.quit()
 	exit()
 
@@ -27,10 +29,10 @@ print("ログイン中...")
 
 #ログインメッセージ関連
 if email == "YOUR_EMAIL_ADDRESS" or password == "YOUR_PASSWORD":
-	print("メールアドレスとパスワード両方をスクリプトファイルに入力してください。\n終了します...")
+	print("メールアドレスとパスワード両方をスクリプトファイルに入力してください。")
 	bye()
 elif driver.find_elements_by_xpath("//*[contains(text(), 'メールアドレスもしくはパスワードが間違っています')]"):
-	print("メールアドレスもしくはパスワードが間違っています。\n終了します...")
+	print("メールアドレスもしくはパスワードが間違っています。")
 	bye()
 elif driver.find_elements_by_xpath("//*[contains(text(), 'マネーフォワードに登録されていない端末・ブラウザからのログインです。')]"):
 	print("二段階認証が必要です。メールを確認し、10分以内に認証コードを入力してください。")
@@ -38,7 +40,7 @@ elif driver.find_elements_by_xpath("//*[contains(text(), 'マネーフォワー�
 	driver.find_element_by_id("verification_code").send_keys(two_factor_auth_code)
 	driver.find_element_by_class_name("form-submit-code").submit()
 	if driver.find_elements_by_xpath("//*[contains(text(), '認証コードが無効です。')]"):
-		print("認証コードが無効です。\n終了します...")
+		print("認証コードが無効です。")
 		bye()
 	else:
 		print("ログインに成功しました!")
@@ -59,7 +61,7 @@ account = len(driver.find_elements_by_xpath("//form[starts-with(@action, '/faggr
 needauth = len(driver.find_elements_by_link_text("要画像認証") + driver.find_elements_by_link_text("要ワンタイムパスワード") + driver.find_elements_by_xpath("//*[contains(text(), '重要なお知らせ')]"))
 
 if account == 0:
-	print("口座が一つもないか、ログインできませんでした。\n終了します...")
+	print("口座が一つもないか、ログインできませんでした。")
 	bye()
 elif needauth != 0:
 	print("認証が必要な口座が" + str(needauth) + "つあります。これらは更新されません。\n" + str(account) + "つの口座情報を更新します...")
