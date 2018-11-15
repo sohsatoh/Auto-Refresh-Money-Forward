@@ -9,26 +9,25 @@ Money Forwardにおける口座情報の更新を一括で行うスクリプト�
 
 
 ## Preparing to run
-まず
+
 ~~~
 cd 【moneyforward.pyがあるディレクトリ】
 chmod 755 ./moneyforward.py
 ~~~
-で実行権限を付与してください。
+で実行権限を付与します。
 
-その後
+次に、下記の部分を、自分のログイン情報、ChromeDriverのパスに書き換えてください。
 ~~~
 email = 'YOUR_EMAIL_ADDRESS'
 password = 'YOUR_PASSWORD'
 path = '/usr/lib/chromium-browser/chromedriver'
 ~~~
-の部分を、自分のログイン情報、ChromeDriverのパスに書き換えます。
 
 ## How to run
 ~~~
 python3 ./moneyforward.py
 ~~~
-で実行。
+で実行します。
 
 又、定期的に実行する際は、cron等で設定してください。
 
