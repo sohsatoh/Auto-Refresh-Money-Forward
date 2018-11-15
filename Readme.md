@@ -1,6 +1,6 @@
 # Auto Refresh Money Forward
 Money Forwardにおける口座情報の更新を一括で行うスクリプトです。
-
+二段階認証にも対応しています。
 
 ## Requirements
 - Python3
