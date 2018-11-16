@@ -2,15 +2,18 @@
 Money Forwardにおける口座情報の更新を一括で行うスクリプトです。
 二段階認証にも対応しています。
 
+ログイン情報はインタラクティブに入力でき、ChromeDriverへのパスも自動で取得します。
+
 ## Requirements
 - Python3
 - Selenium
 - ChromeDriver
+- configparser
 
 (pipがインストールされている場合)
 
 ~~~
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ~~~
 ですべてインストール可能です。
 
@@ -22,11 +25,12 @@ chmod 755 ./moneyforward.py
 ~~~
 で実行権限を付与します。
 
-次に、下記の部分を、自分のログイン情報、ChromeDriverのパスに書き換えてください。
+ログイン情報はconfig.iniに保存されます。
+
+## ChromeDriverが見つからない場合
+下記の部分を、ChromeDriverへのパスに書き換えてください。
 ~~~
-email = 'YOUR_EMAIL_ADDRESS'
-password = 'YOUR_PASSWORD'
-path = '/usr/lib/chromium-browser/chromedriver'
+path = "ChromeDriverへのパス"
 ~~~
 
 ## How to run
