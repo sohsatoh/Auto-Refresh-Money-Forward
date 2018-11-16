@@ -67,7 +67,7 @@ print("ログイン中...")
 
 #ログインメッセージ関連
 if driver.find_elements_by_xpath("//*[contains(text(), 'メールアドレスもしくはパスワードが間違っています')]"):
-	print("メールアドレスもしくはパスワードが間違っています。\n再設定完了後、再起動してください。")
+	print("メールアドレスもしくはパスワードが間違っています。\n再設定完了後、再度起動してください。")
 	create_conf()
 	bye()
 elif driver.find_elements_by_xpath("//*[contains(text(), 'マネーフォワードに登録されていない端末・ブラウザからのログインです。')]"):
@@ -95,7 +95,8 @@ account = len(driver.find_elements_by_xpath("//form[starts-with(@action, '/faggr
 needauth = len(driver.find_elements_by_link_text("要画像認証") + driver.find_elements_by_link_text("要ワンタイムパスワード") + driver.find_elements_by_xpath("//*[contains(text(), '重要なお知らせ')]"))
 
 if account == 0:
-	print("口座が一つもないか、ログインできませんでした。")
+	print("口座が一つもないか、ログインできませんでした。\n再設定後、再度起動してください。")
+	create_conf()
 	bye()
 elif needauth != 0:
 	print("認証が必要な口座が" + str(needauth) + "つあります。これらは更新されません。\n" + str(account) + "つの口座情報を更新します...")
