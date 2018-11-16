@@ -1,3 +1,4 @@
 selenium
 urllib3
 chromedriver
+configparser
