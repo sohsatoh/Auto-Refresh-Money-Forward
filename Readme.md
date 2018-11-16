@@ -17,7 +17,7 @@ pip3 install -r requirements.txt
 ~~~
 ですべてインストール可能です。
 
-## Preparing to run
+## 準備
 
 ~~~
 cd 【moneyforward.pyがあるディレクトリ】
@@ -33,7 +33,7 @@ chmod 755 ./moneyforward.py
 path = "ChromeDriverへのパス"
 ~~~
 
-## How to run
+## 実行
 ~~~
 python3 ./moneyforward.py
 ~~~
@@ -42,6 +42,7 @@ python3 ./moneyforward.py
 又、定期的に実行する際は、cron等で設定してください。
 
 
-## Caution
+## 注意事項
 このスクリプトを連続して動かすことは、威力業務妨害罪に当たる可能性があります。
+
 また、一括更新機能はプレミアム機能として提供されていますので、このスクリプトは自己責任で使用してください。
