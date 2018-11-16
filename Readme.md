@@ -7,6 +7,12 @@ Money Forwardにおける口座情報の更新を一括で行うスクリプト�
 - Selenium
 - ChromeDriver
 
+(pipがインストールされている場合)
+
+~~~
+pip install -r requirements.txt
+~~~
+ですべてインストール可能です。
 
 ## Preparing to run
 
