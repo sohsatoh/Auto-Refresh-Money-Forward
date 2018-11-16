@@ -43,11 +43,9 @@ elif driver.find_elements_by_xpath("//*[contains(text(), 'マネーフォワー�
 		print("認証コードが無効です。")
 		bye()
 	else:
-		print("ログインに成功しました!")
 		driver.get(url)
-		pass
 else:
-	print("ログインに成功しました!")
+	pass
 
 #二段階認証設定画面の回避
 try:
