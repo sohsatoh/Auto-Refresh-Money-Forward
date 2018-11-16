@@ -39,7 +39,7 @@ elif driver.find_elements_by_xpath("//*[contains(text(), 'マネーフォワー�
 	two_factor_auth_code = input("認証コード: ")
 	driver.find_element_by_id("verification_code").send_keys(two_factor_auth_code)
 	driver.find_element_by_class_name("form-submit-code").submit()
-	if driver.find_elements_by_xpath("//*[contains(text(), '認証コードが無効です。')]"):
+	if driver.find_elements_by_xpath("//*[contains(text(), '認証コードが無効です。')]") or len(two_factor_auth_code) == 0:
 		print("認証コードが無効です。")
 		bye()
 	else:
