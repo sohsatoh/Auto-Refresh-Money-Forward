@@ -1,16 +1,54 @@
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import os.path
+import shutil
+import configparser
 from selenium import webdriver
 
 url = "https://moneyforward.com/accounts"
-email = "YOUR_EMAIL_ADDRESS"
-password = "YOUR_PASSWORD"
-path = '/usr/local/bin/chromedriver'
+
+#パスが取得できない場合のみ手動書き換えしてください
+path = "/usr/local/bin/chromedriver"
+
+#ChromeDriverのパスを自動取得
+try:
+	path = shutil.which("chromedriver")
+except:
+	pass
+
+#iniファイルの書き込み
+config = configparser.ConfigParser()
+#if not os.path.isfile("./config.ini"):
+def create_conf():
+	print("ログイン情報を入力してください。次回以降の入力は不要です。\n情報は平文でconfig.iniに保存されます。")
+	config["INFO"] = {
+		'email': input("メールアドレス: "),
+		'password': input("パスワード: ")
+	}
+	with open ('config.ini', 'w') as config_file:
+		config.write(config_file)
+
+if not os.path.isfile("./config.ini"):
+	create_conf()
+
+#iniファイルの読み込み
+try:
+	config.read('config.ini')
+	email = config['INFO']['email']
+	password = config['INFO']['password']
+except:
+	print("config.iniを再設定します。入力後再度起動してください。")
+	create_conf()
+	exit()
 
 options = webdriver.ChromeOptions()
-options.add_argument('--headless')
-driver = webdriver.Chrome(executable_path=path, options=options)
+options.add_argument("--headless")
+try:
+	driver = webdriver.Chrome(executable_path=path, options=options)
+except:
+	print("chromedriverが見つかりません。パスをこのファイルに直接記載してください。")
+	exit()
 driver.implicitly_wait(5)
 print("実行中...")
 
@@ -28,11 +66,9 @@ driver.find_element_by_id("login-btn-sumit").submit()
 print("ログイン中...")
 
 #ログインメッセージ関連
-if email == "YOUR_EMAIL_ADDRESS" or password == "YOUR_PASSWORD":
-	print("メールアドレスとパスワード両方をスクリプトファイルに入力してください。")
-	bye()
-elif driver.find_elements_by_xpath("//*[contains(text(), 'メールアドレスもしくはパスワードが間違っています')]"):
-	print("メールアドレスもしくはパスワードが間違っています。")
+if driver.find_elements_by_xpath("//*[contains(text(), 'メールアドレスもしくはパスワードが間違っています')]"):
+	print("メールアドレスもしくはパスワードが間違っています。\n再設定完了後、再起動してください。")
+	create_conf()
 	bye()
 elif driver.find_elements_by_xpath("//*[contains(text(), 'マネーフォワードに登録されていない端末・ブラウザからのログインです。')]"):
 	print("二段階認証が必要です。メールを確認し、10分以内に認証コードを入力してください。")
