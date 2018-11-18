@@ -19,7 +19,6 @@ except:
 
 #iniファイルの書き込み
 config = configparser.ConfigParser()
-#if not os.path.isfile("./config.ini"):
 def create_conf():
 	print("ログイン情報を入力してください。次回以降の入力は不要です。\n情報は平文でconfig.iniに保存されます。")
 	config["INFO"] = {
