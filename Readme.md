@@ -27,11 +27,6 @@ chmod 755 ./moneyforward.py
 
 ログイン情報はconfig.iniに保存されます。
 
-## ChromeDriverが見つからない場合
-下記の部分を、ChromeDriverへのパスに書き換えてください。
-~~~
-path = "ChromeDriverへのパス"
-~~~
 
 ## 実行
 ~~~
@@ -40,6 +35,13 @@ python3 ./moneyforward.py
 で実行します。
 
 又、定期的に実行する際は、cron等で設定してください。
+
+
+## ChromeDriverが見つからない場合
+下記の部分を、ChromeDriverへのパスに書き換えてください。
+~~~
+path = "ChromeDriverへのパス"
+~~~
 
 
 ## 注意事項
